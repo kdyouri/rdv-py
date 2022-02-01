@@ -1,0 +1,35 @@
+<!-- Le message Flash : -->
+{% if error_message %}
+<div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+    <i class="bi-x-circle-fill"></i>&nbsp;
+    {{ error_message }}   
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<!-- Les zones de saisie : -->
+<div class="mb-3">
+    <label for="id_patient_id" class="form-label">Patient</label>
+    <select name="patient_id" class="form-control select2{% if form.patient_id.errors %} is-invalid{% endif %}" id="id_patient_id">
+        <option value="">&nbsp;</option>
+    {% for patient in patients %}
+        <option value="{{ patient.id }}" {% if form.patient_id.value == patient.id %} selected{% endif %}>{{ patient.prenom }}, {{ patient.nom }} ({{ patient.cin }})</option>
+    {% endfor %}
+    </select>
+    {% for error in form.patient_id.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_date_heure" class="form-label">Date &amp; heure</label>
+    <input type="datetime-local" name="date_heure" class="form-control{% if form.date_heure.errors %} is-invalid{% endif %}" value="{{ form.date_heure.value|date:'Y-m-d\TH:i' }}" id="id_date_heure">
+    {% for error in form.date_heure.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_duree" class="form-label">Durée (minutes)</label>
+    <input type="number" name="duree" class="form-control{% if form.duree.errors %} is-invalid{% endif %}" value="{{ form.duree.value|default_if_none:'' }}" id="id_duree">
+    {% for error in form.duree.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_remarque" class="form-label">Remarque</label>
+    <textarea name="remarque" class="form-control{% if form.remarque.errors %} is-invalid{% endif %}" id="id_remarque" rows="5">{{ form.remarque.value|default_if_none:'' }}</textarea>
+    {% for error in form.remarque.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>

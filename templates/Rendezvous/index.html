@@ -1,0 +1,26 @@
+{% extends layout %}
+{% load helper %}
+
+{% block title %}Rendez-vous{% endblock %}
+{% block css %}
+<link href="//cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" rel="stylesheet">
+<link href="/static/css/rendezvous_index.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="rendezvous index content xcrud-main">
+    <div class="mb-3 clearfix">
+        <h3 class="float-start">Gestion des rendez-vous</h3>
+        <div class="alert alert-info float-end mb-0 py-2 small">
+            <i class="bi-info-circle-fill"></i>&nbsp;
+            Cliquez sur une plage de cellules du calendrier pour créer un rendez-vous
+        </div>
+    </div>
+    <div id="calendar"></div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="//cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/fullcalendar@5.9.0/locales-all.min.js"></script>
+<script src="/static/js/rendezvous_index.js"></script>
+{% endblock %}

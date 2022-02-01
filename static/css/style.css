@@ -1,0 +1,94 @@
+/* Show it is fixed to the top */
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+table.table th.sorting {
+    padding: 0;
+    background: none;
+    position: relative;
+}
+table.table th.sorting>a {
+    display: block;
+    padding: 8px;
+    padding-right: 24px;
+}
+table.table th.sorting>a:after {
+    font-family: bootstrap-icons !important;
+    content: "\f127";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: block;
+    opacity: 0.2;
+}
+table.table th.sorting>a.asc:after {
+    content: "\f148";
+    opacity: 1;
+}
+table.table th.sorting>a.desc:after {
+    content: "\f128";
+    opacity: 1;
+}
+table.table.table-condensed th.sorting>a {
+    padding: 5px;
+    padding-right: 18px;
+}
+table.table th.sorting>a,
+table.table th.sorting>a:hover,
+table.table th.sorting>a:focus {
+    text-decoration: none;
+    color: #212529;
+}
+.btn-group-xs>.btn, .btn-xs {
+    padding: 0.14rem .3rem;
+    font-size: .7rem;
+    border-radius: .15rem;
+}
+.error .invalid-feedback{
+    display: block;
+}
+.error .error-message{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+.error .form-control {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.required label:after {
+    content: " *";
+    color: #dc3545;
+}
+.bootbox-close-button {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: .25em .25em;
+    color: #000;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    border: 0;
+    border-radius: .25rem;
+    opacity: .5;
+    color: transparent;
+}

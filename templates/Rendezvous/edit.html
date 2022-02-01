@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Editer rendez-vous</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="post" action="{{ request.get_full_path }}" novalidate>
+        {% csrf_token %}
+        <div class="modal-body">
+            {% include "Rendezvous/_form.html" %}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi-arrow-counterclockwise"></i> Annuler</button>
+            <button type="submit" class="btn btn-primary"><i class="bi-save"></i> Enregistrer</button>
+        </div>
+        </form>
+        <div style="margin: -55px 0 15px 15px; width: 150px">
+            <form method="post" accept-charset="utf-8" action="/rendezvous/delete/{{ rendezvous_id }}">
+            {% csrf_token %}
+            <button type="button" class="btn btn-danger" onclick="var form = $(this).closest('form'); bootbox.confirm({title: 'Confirmation', message: $(this).data('confirm'), callback: function(r){ if (r) form.submit(); }});" data-confirm="Êtes-vous sûrs de vouloir supprimer ce rendez-vous ?">
+                <i class="bi-trash-fill"></i> Supprimer
+            </button>
+            </form>
+        </div>
+    </div>
+</div>

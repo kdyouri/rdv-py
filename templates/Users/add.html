@@ -1,0 +1,18 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Nouvel utilisateur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form method="post" action="{{ request.get_full_path }}" novalidate>
+        {% csrf_token %}
+        <div class="modal-body">
+            {% include "Users/_form.html" %}            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary float-start" data-bs-dismiss="modal"><i class="bi-arrow-counterclockwise"></i> Annuler</button>
+            <button type="submit" class="btn btn-primary float-end"><i class="bi-save"></i> Enregistrer</button>
+        </div>
+        </form>
+    </div>
+</div>

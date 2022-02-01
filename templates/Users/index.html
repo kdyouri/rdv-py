@@ -1,0 +1,52 @@
+{% extends layout %}
+{% load helper %}
+
+{% block title %}Utilisateurs{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="patients index content xcrud-main">
+    <h3>Gestion des utilisateurs</h3>
+
+    <div class="clearfix" style="margin-bottom: 10px">
+        <a href="/users/add" class="btn btn-success xcrud-btn-add float-end"><i class="bi-person-plus-fill"></i> Nouvel utilisateur</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'first_name' 'Prénom' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'last_name' 'Nom' %}</th>
+                    <th class="sorting xcrud-sort">{% paginator_sort request 'email' 'E-mail' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 12%;">{% paginator_sort request 'username' 'Nom d’utilisateur' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'date_joined' 'Date d’arrivée' %}</th>
+                    <th class="actions" style="width: 8%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in page_obj %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.date_joined|date:'Y-m-d' }}</td>
+                    <td class="actions">
+                        <a href="/users/edit/{{ user.id }}" class="btn btn-warning btn-sm xcrud-btn-edit" data-bs-toggle="tooltip" title="Éditer"><i class="bi-pencil-fill"></i></a>
+                        <a href="/users/delete/{{ user.id }}" class="btn btn-danger btn-sm xcrud-btn-delete" data-bs-toggle="tooltip" title="Supprimer" data-msg="Êtes-vous sûrs de vouloir supprimer l’utilisateur `{{ user.first_name }} {{ user.last_name }}` ?"><i class="bi-x-lg"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination: -->
+    {% include "elements/paginator.html" %}
+
+    <!-- Log SQL: -->
+    {% if debug %}{% include "elements/sql_dump.html" %}{% endif %}
+</div>
+{% endblock %}

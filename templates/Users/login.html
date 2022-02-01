@@ -1,0 +1,33 @@
+{% extends 'layouts/login.html' %}
+{% block content %}
+
+{% if form.errors %}
+<div class="alert alert-danger alert-dismissible d-flex align-items-center text-start" role="alert">
+    <i class="bi-x-circle-fill"></i>&nbsp;
+    Nom d’utilisateur ou mot de passe incorrecte!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Veuillez vous connecter</h1>
+
+    <div class="form-floating">
+        <input type="text" class="form-control" name="username" id="floatingEmail" placeholder="Nom d’utilisateur">
+        <label for="floatingEmail">Nom d’utilisateur</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Mot de passe">
+        <label for="floatingPassword">Mot de passe</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Se souvenir de moi
+        </label>
+    </div>
+    <button type="submit" class="w-100 btn btn-lg btn-primary">Se connecter</button>
+
+    <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y' %} Tous droits réservés.</p>
+</form>
+{% endblock %}

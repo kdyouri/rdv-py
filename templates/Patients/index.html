@@ -1,0 +1,54 @@
+{% extends layout %}
+{% load helper %}
+
+{% block title %}Patients{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="patients index content xcrud-main">
+    <h3>Gestion des patients</h3>
+
+    <div class="clearfix" style="margin-bottom: 10px">
+        <a href="/patients/add" class="btn btn-success xcrud-btn-add float-end"><i class="bi-person-plus-fill"></i> Nouveau patient</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'prenom' 'Prénom' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'nom' 'Nom' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 10%;">{% paginator_sort request 'cin' 'CIN' %}</th>
+                    <th class="sorting xcrud-sort">{% paginator_sort request 'email' 'E-mail' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 12%;">{% paginator_sort request 'telephone' 'Téléphone' %}</th>
+                    <th class="sorting xcrud-sort" style="width: 15%;">{% paginator_sort request 'date_naissance' 'Date naissance' %}</th>
+                    <th class="actions" style="width: 8%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in page_obj %}
+                <tr>
+                    <td>{{ patient.prenom }}</td>
+                    <td>{{ patient.nom }}</td>
+                    <td>{{ patient.cin }}</td>
+                    <td>{{ patient.email }}</td>
+                    <td>{{ patient.telephone }}</td>
+                    <td>{{ patient.date_naissance|date:'Y-m-d' }}</td>
+                    <td class="actions">
+                        <a href="/patients/edit/{{ patient.id }}" class="btn btn-warning btn-sm xcrud-btn-edit" data-bs-toggle="tooltip" title="Éditer"><i class="bi-pencil-fill"></i></a>
+                        <a href="/patients/delete/{{ patient.id }}" class="btn btn-danger btn-sm xcrud-btn-delete" data-bs-toggle="tooltip" title="Supprimer" data-msg="Êtes-vous sûrs de vouloir supprimer le patient `{{ patient.prenom }} {{ patient.nom }}` ?"><i class="bi-x-lg"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination: -->
+    {% include "elements/paginator.html" %}
+
+    <!-- Log SQL: -->
+    {% if debug %}{% include "elements/sql_dump.html" %}{% endif %}
+</div>
+{% endblock %}

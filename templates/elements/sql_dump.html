@@ -1,0 +1,16 @@
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>SQL</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for query in conn.queries %}
+        <tr>
+            <td>{{ query.sql }}</td>
+            <td>{{ query.time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

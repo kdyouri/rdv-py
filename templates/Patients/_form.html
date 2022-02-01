@@ -1,0 +1,40 @@
+<!-- Le message Flash : -->
+{% if error_message %}
+<div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+    <i class="bi-x-circle-fill"></i>&nbsp;
+    {{ error_message }}   
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<!-- Les zones de saisie : -->
+<div class="mb-3">
+    <label for="id_prenom" class="form-label">Prénom</label>
+    <input type="text" name="prenom" class="form-control{% if form.prenom.errors %} is-invalid{% endif %}" value="{{ form.prenom.value|default_if_none:'' }}" id="id_prenom">
+    {% for error in form.prenom.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_nom" class="form-label">Nom</label>
+    <input type="text" name="nom" class="form-control{% if form.nom.errors %} is-invalid{% endif %}" value="{{ form.nom.value|default_if_none:'' }}" id="id_nom">
+    {% for error in form.nom.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_cin" class="form-label">CIN (Si mineur mettre celui du titeur)</label>
+    <input type="text" name="cin" class="form-control{% if form.cin.errors %} is-invalid{% endif %}" value="{{ form.cin.value|default_if_none:'' }}" id="id_cin">
+    {% for error in form.cin.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_email" class="form-label">E-mail</label>
+    <input type="email" name="email" class="form-control{% if form.email.errors %} is-invalid{% endif %}" value="{{ form.email.value|default_if_none:'' }}" id="id_email">
+    {% for error in form.email.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_telephone" class="form-label">Téléphone</label>
+    <input type="text" name="telephone" class="form-control{% if form.telephone.errors %} is-invalid{% endif %}" value="{{ form.telephone.value|default_if_none:'' }}" id="id_telephone">
+    {% for error in form.telephone.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>
+<div class="mb-3">
+    <label for="id_date_naissance" class="form-label">Date naissance</label>
+    <input type="date" name="date_naissance" class="form-control{% if form.date_naissance.errors %} is-invalid{% endif %}" value="{{ form.date_naissance.value|date:'Y-m-d' }}" id="id_date_naissance">
+    {% for error in form.date_naissance.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+</div>

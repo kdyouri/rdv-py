@@ -1,0 +1,6 @@
+.fc-v-event {
+    cursor: pointer;
+}
+.fc-v-event:hover {
+    opacity: .8;
+}
